@@ -1,3 +1,5 @@
+Django project "Shop" 
+
 auth_user:
 
 User registration and sending email to confirm the registration
