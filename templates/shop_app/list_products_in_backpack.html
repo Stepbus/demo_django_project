@@ -1,0 +1,39 @@
+{% extends 'auth_user/main_page.html' %}
+{% block article %}
+
+<article class="main">
+<p> Backpack {{ user|upper}}</p>
+
+<form method="post">
+  {% csrf_token %}
+    <table border="1" style="width:100%">
+ <tr>
+        <th scope="col">category</th>
+        <th scope="col">brand_name</th>
+        <th scope="col">model</th>
+        <th scope="col">amount</th>
+        <th scope="col">Choose the number of</th>
+        <th scope="col">DELETE</th>
+    </tr>
+    {% for object in products %}
+        <tr>
+        <td>{{ object.product.category }}</td>
+        <td>{{ object.product.brand_name }}</td>
+        <td>{{ object.product.model }}</td>
+        <td>{{ object.count }}</td>
+        <td><input id="amount" name="{{ object.product_id }}" type="number" value="0" min="0" max="{{ object.count }}" placeholder="Select the amount of ..."></td>
+
+        <td><a href="{% url 'delete' object.product_id %}">DELETE</a></td>
+    {% empty %}
+        <td>No objects yet.</td>
+    {% endfor %}
+    </tr>
+    </table>
+    <p></p>
+    <td><button type="submit" style="color: green">RETURN THE PRODUCT</button></td>
+</form>
+
+    <a href="{% url 'backpack-list' %}" style="color: white">TO BUY</a>
+
+</article>
+{% endblock %}

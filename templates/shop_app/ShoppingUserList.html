@@ -1,0 +1,30 @@
+{% extends 'auth_user/main_page.html' %}
+{% block content %}
+<aside class="aside aside-2">
+
+<p> Shopping list {{ user|upper}}</p>
+<form>
+    <table border="1" style="width:100%">
+ <tr>
+        <th scope="col">category</th>
+        <th scope="col">brand_name</th>
+        <th scope="col">model</th>
+        <th scope="col">amount</th>
+        <th scope="col">purchase date</th>
+    </tr>
+    {% for object in products %}
+        <tr>
+        <td>{{ object.category }}</td>
+        <td>{{ object.brand_name }}</td>
+        <td>{{ object.model }}</td>
+        <td>{{ object.count }}</td>
+        <td>{{ object.purchase_date }}</td>
+    {% empty %}
+        <td>No objects yet.</td>
+    {% endfor %}
+    </tr>
+    </table>
+</form>
+
+</aside>
+{% endblock %}

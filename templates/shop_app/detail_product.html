@@ -1,0 +1,38 @@
+{% extends 'auth_user/main_page.html' %}
+{% block article %}
+<article class="main">
+
+<p> DETAIL OF PRODUCT </p>
+ <form method="post">
+     {% csrf_token %}
+    <table class="sortable" border="1" style="width:100%">
+ <tr>
+        <th scope="col">category</th>
+        <th scope="col">brand_name</th>
+        <th scope="col">model</th>
+        <th scope="col">price</th>
+        <th scope="col">color</th>
+        <th scope="col">warranty(months)</th>
+        <th scope="col">count</th>
+        <th scope="col">Choose the number of</th>
+        <th scope="col">ADD PRODUCTS IN BACKPACK</th>
+    </tr>
+        <tr>
+        <td>{{ object.category }}</td>
+        <td>{{ object.brand_name }}</td>
+        <td>{{ object.model }}</td>
+        <td>{{ object.price }}</td>
+        <td>{{ object.color }}</td>
+        <td>{{ object.warranty }}</td>
+        <td>{{ object.count }}</td>
+        <td><input id="amount" name="count" type="number" value="0" min="0" max="{{ object.count }}" placeholder="Select the amount of ..."></td>
+        <td><button type="submit" style="color: green">ADD TO BACKPACK</button></td>
+    </tr>
+    </table>
+ </form>
+
+{% if message %}
+    {{ message }}
+{% endif %}
+</article>
+{% endblock %}

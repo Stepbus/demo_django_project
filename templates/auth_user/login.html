@@ -1,0 +1,13 @@
+
+<h2>Log In</h2>
+<form method="post">
+  {% csrf_token %}
+        {% if form.errors %}
+            <p>{{form.errors}}</p>
+        {% endif %}
+      {% for field in form %}
+        <label>{{field.label}}</label>
+        <p>{{field}}</p>
+      {% endfor %}
+      <button type="submit">Login</button>
+</form>
